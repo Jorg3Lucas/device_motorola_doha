@@ -19,7 +19,6 @@
 # product configuration (apps).
 #
 DEVICE_PATH := device/motorola/doha
-include $(DEVICE_PATH)/BoardConfigGsi.mk
 
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RECOVERY := false
