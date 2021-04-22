@@ -40,5 +40,10 @@ TARGET_DEVICE := Moto G8 Plus
 PRODUCT_SYSTEM_NAME := Moto G8 Plus
 TARGET_VENDOR := motorola
 
+# Fingerprint
+VENDOR_RELEASE := 9/PPIS29.65-24-2/dc7f7b:user/release-keys
+BUILD_FINGERPRINT := motorola/doha_retail/doha:$(VENDOR_RELEASE)
+PLATFORM_SECURITY_PATCH_OVERRIDE := 2019-11-01
+
 # vendor
 $(call inherit-product, vendor/motorola/doha/doha-vendor.mk)
