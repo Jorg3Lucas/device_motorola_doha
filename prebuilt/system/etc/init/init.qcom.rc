@@ -44,3 +44,17 @@ service vendor.sensors /system/bin/true
     disabled
     oneshot
     override
+
+service logger /system/bin/logcat -b all -D -f /cache/boot_log.txt
+    class main
+    user root
+    group root system
+    disabled
+    oneshot
+
+on post-fs-data
+    rm /cache/boot_log.txt
+    start logger
+
+on property:sys.boot_completed=1
+    stop logger
