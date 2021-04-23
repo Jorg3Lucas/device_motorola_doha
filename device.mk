@@ -22,14 +22,12 @@
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
 
-PRODUCT_PACKAGES += fstab.qcom
+# AAPT
+PRODUCT_AAPT_CONFIG := xxxhdpi
+PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
+PRODUCT_CHARACTERISTICS := nosdcard
 
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    ro.build.version.all_codenames=$(PLATFORM_VERSION_ALL_CODENAMES) \
-    ro.build.version.codename=$(PLATFORM_VERSION_CODENAME) \
-    ro.build.version.release=$(PLATFORM_VERSION) \
-    ro.build.version.sdk=$(PLATFORM_SDK_VERSION)
-
+# AB Partitions
 AB_OTA_PARTITIONS += \
     boot \
     dtbo \
@@ -58,9 +56,8 @@ PRODUCT_PACKAGES_DEBUG += \
 
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl.recovery \
-    bootctrl.trinket.recovery \
-    fastbootd
-
+    bootctrl.trinket.recovery
+    
 # Camera
 PRODUCT_PACKAGES += \
     Snap
@@ -74,10 +71,6 @@ PRODUCT_PACKAGES += \
     libdisplayconfig \
     libqdMetaData.system \
     libqdMetaData
-
-PRODUCT_AAPT_CONFIG := xxxhdpi
-PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
-PRODUCT_CHARACTERISTICS := nosdcard
 
 # FM
 PRODUCT_PACKAGES += \
@@ -135,10 +128,6 @@ PRODUCT_PACKAGES += \
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
-# TODO(b/78308559): includes vr_hwc into GSI before vr_hwc move to vendor
-PRODUCT_PACKAGES += \
-    vr_hwc
-
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.telephony.ims.xml \
@@ -172,6 +161,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     vndk_package
 
+# Wi-Fi
+PRODUCT_PACKAGES += \
+    vendor.qti.hardware.wifi@1.0
+    
 # Temporary handling
 #
 # Include config.fs get only if legacy device/qcom/<target>/android_filesystem_config.h
@@ -185,9 +178,3 @@ else
   $(warning TODO: Need to replace legacy $(DEVICE_CONFIG_DIR)android_filesystem_config.h with config.fs)
   $(warning **********)
 endif
-
-# $(call inherit-product, build/make/target/product/gsi_keys.mk)
-
-# Wi-Fi
-PRODUCT_PACKAGES += \
-    vendor.qti.hardware.wifi@1.0

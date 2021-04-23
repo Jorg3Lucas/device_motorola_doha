@@ -20,13 +20,8 @@
 #
 DEVICE_PATH := device/motorola/doha
 
-TARGET_NO_BOOTLOADER := true
-
+# Assert
 TARGET_OTA_ASSERT_DEVICE := doha
-
-TARGET_BOOTLOADER_BOARD_NAME := trinket
-TARGET_BOARD_PLATFORM := trinket
-TARGET_BOARD_PLATFORM_GPU := qcom-adreno610
 
 # Architecture
 TARGET_ARCH := arm64
@@ -46,6 +41,10 @@ TARGET_USES_64_BIT_BINDER := true
 
 # Audio
 USE_XML_AUDIO_POLICY_CONF := 1
+
+# Bootloader
+TARGET_NO_BOOTLOADER := true
+TARGET_BOOTLOADER_BOARD_NAME := trinket
 
 # Broken rules
 BUILD_BROKEN_DUP_RULES := true
@@ -107,6 +106,11 @@ BOARD_ROOT_EXTRA_SYMLINKS := \
     /vendor/bt_firmware:/bt_firmware \
     /vendor/dsp:/dsp \
     /vendor/firmware_mnt:/firmware
+
+# Platform
+BOARD_USES_QCOM_HARDWARE := true
+TARGET_BOARD_PLATFORM := trinket
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno610
 
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
