@@ -61,7 +61,7 @@ PRODUCT_PACKAGES_DEBUG += \
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl.recovery \
     bootctrl.trinket.recovery
-    
+
 # Camera
 PRODUCT_PACKAGES += \
     Snap
@@ -141,13 +141,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/com.nxp.mifare.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/com.nxp.mifare.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/handheld_core_hardware.xml
 
-# Prebuilt
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/prebuilt/root,recovery/root) \
-    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/prebuilt/permissions,system/product/etc/permissions) \
-    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/prebuilt/system,system) \
-    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/prebuilt/permissions,system/etc/permissions)
-
 # QMI
 PRODUCT_PACKAGES += \
     libjson
@@ -155,6 +148,11 @@ PRODUCT_PACKAGES += \
 # USB
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
+
+# Vendor overlays
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor-overlay/root,recovery/root) \
+    $(call find-copy-subdir-files,*,$(LOCAL_PATH)/vendor-overlay/system,system)
 
 # Video seccomp policy files
 PRODUCT_COPY_FILES += \
@@ -167,7 +165,7 @@ PRODUCT_PACKAGES += \
 # Wi-Fi
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.wifi@1.0
-    
+
 # Temporary handling
 #
 # Include config.fs get only if legacy device/qcom/<target>/android_filesystem_config.h
