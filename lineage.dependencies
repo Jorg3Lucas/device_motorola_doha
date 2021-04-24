@@ -1,0 +1,14 @@
+[
+  {
+    "remote": "github",
+    "repository": "Jorg3Lucas/vendor_motorola_doha",
+    "target_path": "vendor/motorola/doha",
+    "revision": "lineage-17.1"
+  },
+  {
+    "remote": "github",
+    "repository": "Jorg3Lucas/kernel_motorola_trinket",
+    "target_path": "kernel/motorola/trinket",
+    "revision": "lineage-17.1"
+  }
+]
