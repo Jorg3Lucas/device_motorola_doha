@@ -49,6 +49,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_HOST_PACKAGES += \
     brillo_update_payload
 
+# Bluetooth
+PRODUCT_PACKAGES += \
+    BluetoothQti
+
 # Boot control
 PRODUCT_PACKAGES_DEBUG += \
     bootctl \
